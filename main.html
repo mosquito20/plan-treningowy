@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PulseForm dobiera plan treningowy na podstawie Twojego BMI, celu i możliwości.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
+    <title>PulseForm | Twój plan treningowy</title>
+</head>
+<body>
+    <div class="app-shell">
+        <header class="topbar">
+            <a class="brand" href="#start" aria-label="PulseForm - strona główna"><span class="brand-mark"><span></span><span></span><span></span></span><span>PULSE<span class="accent">FORM</span></span></a>
+            <div class="status"><span class="status-dot"></span> SYSTEM ONLINE</div>
+        </header>
+        <main>
+            <section class="hero" id="start">
+                <div class="hero-copy"><p class="eyebrow"><span class="eyebrow-line"></span> PERSONALIZACJA 01 / 04</p><h1>Twój rytm.<br><em>Twoja</em> forma.</h1><p class="hero-text">Wprowadź kilka informacji, a algorytm PulseForm ułoży plan, który pasuje do Twojego ciała, celu i codziennego tempa.</p><div class="hero-stats"><div><strong>01</strong><span>profil</span></div><div><strong>02</strong><span>cel</span></div><div><strong>03</strong><span>plan</span></div></div></div>
+                <div class="hero-orbit" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit-core"><span>BMI</span><strong>+</strong></div><span class="orbit-label label-top">YOUR DATA</span><span class="orbit-label label-bottom">YOUR EVOLUTION</span></div>
+            </section>
+            <section class="planner-section" id="planner">
+                <div class="section-heading"><div><p class="eyebrow"><span class="eyebrow-line"></span> ZBUDUJ SWÓJ PROFIL</p><h2>Dobierz swój plan treningowy</h2></div><p class="step-count">KROK <strong id="stepNumber">01</strong> / 04</p></div>
+                <div class="step-progress" role="progressbar" aria-label="Postęp konfiguracji planu" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1"><span id="stepProgressFill"></span></div>
+                <form id="plannerForm" class="planner-form" novalidate>
+                    <section class="form-step" data-step="0" aria-label="Dane podstawowe">
+                        <div class="form-grid">
+                            <fieldset class="form-card card-wide"><legend><span class="number">01</span> Dane podstawowe</legend><div class="field-row"><label>Imię<input id="firstName" name="imie" type="text" maxlength="50" autocomplete="given-name" required></label><label>Nazwisko<input id="lastName" name="nazwisko" type="text" maxlength="50" autocomplete="family-name" required></label></div><div class="field-row"><label>Przedział wiekowy<select id="age" required><option value="18-25">18–25 lat</option><option value="26-35">26–35 lat</option><option value="36-50">36–50 lat</option><option value="51+">51+ lat</option></select></label><div class="gender-field"><span class="gender-label">Płeć</span><span class="segmented"><label class="gender-option"><input type="radio" name="gender" value="kobieta" checked>Kobieta</label><label class="gender-option"><input type="radio" name="gender" value="mężczyzna">Mężczyzna</label></span></div></div></fieldset>
+                        </div>
+                    </section>
+                    <section class="form-step" data-step="1" aria-label="Wymiary ciała" hidden>
+                        <div class="form-grid">
+                            <fieldset class="form-card card-wide"><legend><span class="number">02</span> Wymiary ciała</legend><p class="step-description">Podaj aktualny wzrost i masę ciała. Nie musisz oceniać swojej sylwetki.</p><div class="field-row"><label>Wzrost <span class="unit">cm</span><input id="height" type="number" min="120" max="230" placeholder="np. 175" required></label><label>Masa ciała <span class="unit">kg</span><input id="weight" type="number" min="35" max="250" placeholder="np. 70" required></label></div></fieldset>
+                        </div>
+                    </section>
+                    <section class="form-step" data-step="2" aria-label="Cel treningowy" hidden>
+                        <div class="form-grid">
+                            <fieldset class="form-card card-wide"><legend><span class="number">03</span> Cel treningowy</legend><div class="goal-grid"><label class="goal"><input type="radio" name="goal" value="sylwetka" checked><span>↗</span><b>Wyrzeźb sylwetkę</b><small>definicja i proporcje</small></label><label class="goal"><input type="radio" name="goal" value="masa"><span>↥</span><b>Zbuduj masę</b><small>siła i objętość</small></label><label class="goal"><input type="radio" name="goal" value="redukcja"><span>⌁</span><b>Spal tkankę</b><small>lekkość i energia</small></label><label class="goal"><input type="radio" name="goal" value="kondycja"><span>◉</span><b>Popraw kondycję</b><small>wydolność i mobilność</small></label></div><label class="progress-field">Oczekiwane tempo progresu<select id="progress"><option value="spokojne">Spokojne — buduję nawyk</option><option value="regularne" selected>Regularne — widoczny progres</option><option value="ambitne">Ambitne — maksymalne tempo</option></select></label></fieldset>
+                        </div>
+                    </section>
+                    <section class="form-step" data-step="3" aria-label="Plan tygodnia" hidden>
+                        <div class="form-grid">
+                            <fieldset class="form-card card-wide schedule-card"><legend><span class="number">04</span> Plan tygodnia</legend><div class="schedule-grid"><label>Liczba treningów w tygodniu<span class="range-value"><strong id="daysValue">3</strong> dni</span><input id="days" type="range" min="1" max="6" value="3"><span class="range-labels"><small>1 dzień</small><small>6 dni</small></span></label><label>Długość jednej sesji<span class="range-value"><strong id="minutesValue">45</strong> min</span><input id="minutes" type="range" min="20" max="90" step="5" value="45"><span class="range-labels"><small>20 min</small><small>90 min</small></span></label><label>Intensywność<span class="range-value"><strong id="intensityValue">Średnia</strong></span><input id="intensity" type="range" min="1" max="3" value="2"><span class="range-labels"><small>Spokojna</small><small>Wysoka</small></span></label></div></fieldset>
+                        </div>
+                    </section>
+                    <div class="step-actions"><button class="step-button step-back" id="previousStep" type="button" hidden>← Wstecz</button><button class="step-button step-next" id="nextStep" type="button">Dalej <span>→</span></button><button class="submit-button" id="createPlan" type="submit" hidden><span>Dobierz mój plan treningowy</span><b>→</b></button></div>
+                    <p id="saveStatus" class="save-status" aria-live="polite"></p>
+                </form>
+            </section>
+            <section class="result-panel" id="result" aria-live="polite"><div class="result-copy"><p class="eyebrow"><span class="eyebrow-line"></span> ANALIZA ZAKOŃCZONA</p><h2>Twój plan jest gotowy.</h2><p id="resultText">Uzupełnij profil, aby zobaczyć rekomendowany kierunek.</p><a href="#planner" class="text-link">Edytuj profil <span>↗</span></a></div><div class="result-metrics"><div><span>Wskaźnik BMI</span><strong id="bmiResult">—</strong><small id="bmiLabel">oczekuje na dane</small></div><div><span>Rekomendacja</span><strong id="planResult">—</strong><small>program PulseForm</small></div></div><div class="plan-dashboard"><div class="dashboard-heading"><div><p class="eyebrow"><span class="eyebrow-line"></span> TWÓJ TYDZIEŃ</p><h3 id="sessionTitle">Plan na dziś</h3><p class="session-meta" id="sessionMeta"></p></div><span class="completion"><strong id="completedCount">0</strong> / <span id="totalCount">0</span> ćwiczeń</span></div><div class="session-progress" role="progressbar" aria-label="Postęp treningu" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0"><span id="workoutProgressFill"></span></div><div class="week-tabs" id="weekTabs" role="tablist" aria-label="Dni planu"></div><div class="workout-list" id="workoutList"></div><div class="habit-strip"><span class="habit-icon">+</span><span><strong>Mały krok, regularnie.</strong><small>Zestaw ćwiczeń zmienia się zależnie od dnia. Zaznaczaj wykonane, aby śledzić postęp treningu.</small></span></div></div></section>
+        </main><footer><span>© 2026 PULSEFORM</span><span>MOVE WITH INTENT <i></i></span></footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        const form = document.querySelector('#plannerForm'); const height = document.querySelector('#height'); const weight = document.querySelector('#weight'); const result = document.querySelector('#result'); const intensityNames = { 1: 'Spokojna', 2: 'Średnia', 3: 'Wysoka' }; const goalNames = { sylwetka: 'Rzeźba', masa: 'Masa mięśniowa', redukcja: 'Redukcja', kondycja: 'Kondycja' }; const workoutPlans = {
+            sylwetka: [
+                { title: 'Całe ciało A', exercises: [['Przysiad z masą ciała', 'Nogi', '3 serie · 10–12 powt.'], ['Pompki przy podwyższeniu', 'Klatka piersiowa', '3 serie · 8–12 powt.'], ['Most biodrowy', 'Pośladki', '3 serie · 12–15 powt.'], ['Deska na przedramionach', 'Core', '3 serie · 20–40 sek.']] },
+                { title: 'Całe ciało B', exercises: [['Wykrok w tył', 'Nogi', '3 serie · 8–10 na stronę'], ['Wznosy bioder', 'Pośladki', '3 serie · 12–15 powt.'], ['Bird dog', 'Plecy i core', '3 serie · 8–10 na stronę'], ['Dead bug', 'Core', '3 serie · 8–10 na stronę']] }
+            ],
+            masa: [
+                { title: 'Siła A', exercises: [['Przysiad goblet', 'Nogi', '4 serie · 8–12 powt.'], ['Wiosłowanie plecakiem', 'Plecy', '4 serie · 8–12 powt.'], ['Pompki', 'Klatka piersiowa', '3 serie · 8–12 powt.'], ['Wznosy bioder', 'Pośladki', '3 serie · 10–15 powt.']] },
+                { title: 'Siła B', exercises: [['Martwy ciąg z plecakiem', 'Tył uda', '4 serie · 8–12 powt.'], ['Wykrok w tył', 'Nogi', '3 serie · 8–10 na stronę'], ['Wyciskanie plecaka nad głowę', 'Barki', '3 serie · 8–12 powt.'], ['Deska', 'Core', '3 serie · 20–40 sek.']] }
+            ],
+            redukcja: [
+                { title: 'Ruch A', exercises: [['Marsz w miejscu', 'Rozgrzewka', '3 min · spokojne tempo'], ['Przysiad', 'Nogi', '3 serie · 10–12 powt.'], ['Mountain climbers', 'Całe ciało', '3 serie · 20–30 sek.'], ['Naprzemienny krok odstawno-dostawny', 'Kondycja', '3 serie · 30 sek.']] },
+                { title: 'Ruch B', exercises: [['Step jack bez podskoku', 'Rozgrzewka', '3 min · spokojne tempo'], ['Wykrok w tył', 'Nogi', '3 serie · 8–10 na stronę'], ['Naprzemienne dotknięcia barków', 'Core', '3 serie · 10–12 na stronę'], ['Szybki marsz w miejscu', 'Kondycja', '4 serie · 30 sek.']] }
+            ],
+            kondycja: [
+                { title: 'Sprawność A', exercises: [['Krążenia ramion', 'Mobilizacja', '2 serie · 30 sek.'], ['Bird dog', 'Stabilizacja', '3 serie · 8–10 na stronę'], ['Przysiad do krzesła', 'Siła', '3 serie · 10–12 powt.'], ['Marsz w miejscu', 'Kondycja', '4 serie · 40 sek.']] },
+                { title: 'Sprawność B', exercises: [['Naprzemienne unoszenie kolan', 'Mobilizacja', '2 serie · 30 sek.'], ['Dead bug', 'Stabilizacja', '3 serie · 8–10 na stronę'], ['Pompki przy ścianie', 'Siła', '3 serie · 10–12 powt.'], ['Krok odstawno-dostawny', 'Kondycja', '4 serie · 40 sek.']] }
+            ]
+        }; const days = document.querySelector('#days'); const minutes = document.querySelector('#minutes'); const intensity = document.querySelector('#intensity'); const formSteps = [...document.querySelectorAll('.form-step')]; let currentStep = 0; let activeDay = 0; let completedByDay = {};
+        function updateRange(input, output, values) { output.textContent = values ? values[input.value] : input.value; }
+        days.addEventListener('input', () => updateRange(days, document.querySelector('#daysValue'))); minutes.addEventListener('input', () => updateRange(minutes, document.querySelector('#minutesValue'))); intensity.addEventListener('input', () => updateRange(intensity, document.querySelector('#intensityValue'), intensityNames));
+        function updateStep() { formSteps.forEach((step, index) => { step.hidden = index !== currentStep; }); document.querySelector('#stepNumber').textContent = String(currentStep + 1).padStart(2, '0'); document.querySelector('.step-count').setAttribute('aria-label', `Krok ${currentStep + 1} z ${formSteps.length}`); document.querySelector('.step-progress').setAttribute('aria-valuenow', currentStep + 1); document.querySelector('#stepProgressFill').style.width = `${((currentStep + 1) / formSteps.length) * 100}%`; document.querySelector('#previousStep').hidden = currentStep === 0; document.querySelector('#nextStep').hidden = currentStep === formSteps.length - 1; document.querySelector('#createPlan').hidden = currentStep !== formSteps.length - 1; }
+        function validateCurrentStep() { const controls = [...formSteps[currentStep].querySelectorAll('input, select')]; for (const control of controls) { if (!control.checkValidity()) { control.reportValidity(); return false; } } return true; }
+        document.querySelector('#nextStep').addEventListener('click', () => { if (!validateCurrentStep()) return; currentStep += 1; updateStep(); formSteps[currentStep].scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+        document.querySelector('#previousStep').addEventListener('click', () => { currentStep -= 1; updateStep(); formSteps[currentStep].scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+        function updateWorkoutProgress(exercises) { const done = completedByDay[activeDay]?.size || 0; const progress = document.querySelector('.session-progress'); document.querySelector('#completedCount').textContent = done; document.querySelector('#totalCount').textContent = exercises.length; document.querySelector('#workoutProgressFill').style.width = `${(done / exercises.length) * 100}%`; progress.setAttribute('aria-valuemax', exercises.length); progress.setAttribute('aria-valuenow', done); }
+        function renderWorkout(goal, sessionMinutes) { const plan = workoutPlans[goal][activeDay % workoutPlans[goal].length]; const exercises = plan.exercises; const list = document.querySelector('#workoutList'); document.querySelector('#sessionTitle').textContent = plan.title; document.querySelector('#sessionMeta').textContent = `TRENING ${activeDay + 1} · ${sessionMinutes} MIN · ${exercises.length} ĆWICZENIA`; list.innerHTML = exercises.map(([name, focus, dose], index) => `<article class="workout-item"><span class="exercise-number">0${index + 1}</span><div><strong>${name}</strong><small>${focus} <span>·</span> ${dose}</small></div><button class="exercise-check${completedByDay[activeDay]?.has(index) ? ' is-done' : ''}" type="button" aria-label="Oznacz ${name} jako wykonane" aria-pressed="${completedByDay[activeDay]?.has(index) || false}">✓</button></article>`).join(''); list.querySelectorAll('.exercise-check').forEach((button, index) => button.addEventListener('click', () => { completedByDay[activeDay] ||= new Set(); if (completedByDay[activeDay].has(index)) completedByDay[activeDay].delete(index); else completedByDay[activeDay].add(index); button.classList.toggle('is-done'); button.setAttribute('aria-pressed', String(completedByDay[activeDay].has(index))); button.closest('.workout-item').classList.toggle('is-done'); updateWorkoutProgress(exercises); })); updateWorkoutProgress(exercises); }
+        function renderWeek(goal, sessionMinutes, dayCount) { const tabs = document.querySelector('#weekTabs'); const labels = ['Pn', 'Wt', 'Śr', 'Cz', 'Pt', 'Sb']; tabs.innerHTML = labels.slice(0, Number(dayCount)).map((label, index) => `<button type="button" class="week-tab${index === activeDay ? ' is-active' : ''}" role="tab" aria-selected="${index === activeDay}" aria-controls="workoutList"><small>${label}</small><strong>${index + 1}</strong></button>`).join(''); tabs.querySelectorAll('.week-tab').forEach((tab, index) => tab.addEventListener('click', () => { activeDay = index; renderWeek(goal, sessionMinutes, dayCount); })); renderWorkout(goal, sessionMinutes); }
+        form.addEventListener('submit', (event) => { event.preventDefault(); if (currentStep !== formSteps.length - 1 || !validateCurrentStep()) return; const bmi = Number(weight.value) / Math.pow(Number(height.value) / 100, 2); const bmiLabel = bmi < 18.5 ? 'poniżej normy' : bmi < 25 ? 'w normie' : bmi < 30 ? 'podwyższone' : 'wysokie'; const goal = document.querySelector('input[name="goal"]:checked').value; const plan = goalNames[goal]; const progress = document.querySelector('#progress').value; activeDay = 0; completedByDay = {}; document.querySelector('#bmiResult').textContent = bmi.toFixed(1); document.querySelector('#bmiLabel').textContent = bmiLabel; document.querySelector('#planResult').textContent = plan; document.querySelector('#resultText').textContent = `Na podstawie Twoich danych proponujemy ${plan.toLowerCase()} w ${progress} tempie, ${days.value} ${days.value === '1' ? 'dzień' : 'dni'} tygodniowo, po ${minutes.value} minut.`; renderWeek(goal, minutes.value, days.value); result.classList.add('is-visible'); result.scrollIntoView({ behavior: 'smooth', block: 'center' }); });
+        updateStep();
+    </script>
+    <script>
+        form.addEventListener('submit', async () => {
+            const saveStatus = document.querySelector('#saveStatus');
+            const payload = {
+                imie: document.querySelector('#firstName').value.trim(),
+                nazwisko: document.querySelector('#lastName').value.trim(),
+                wzrost: Number(height.value),
+                masa: Number(weight.value),
+                cel: document.querySelector('input[name="goal"]:checked').value
+            };
+
+            saveStatus.textContent = 'Zapisywanie profilu...';
+            saveStatus.classList.remove('is-error');
+
+            try {
+                const response = await fetch('save_client.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const data = await response.json();
+                if (!response.ok) throw new Error(data.error || 'Nie udało się zapisać profilu.');
+                saveStatus.textContent = `Profil zapisany w bazie danych. ID: ${data.id}, BMI: ${Number(data.bmi).toFixed(2)}, plan: ${data.rodzaj_planu}.`;
+            } catch (error) {
+                saveStatus.textContent = window.location.protocol === 'file:'
+                    ? 'Otwórz stronę przez XAMPP: http://localhost/BMI/main.html. Bezpośrednio otwarty plik nie może zapisać danych przez PHP.'
+                    : 'Plan obliczono, ale zapis do bazy się nie powiódł. Sprawdź, czy MySQL działa i czy tabela klienci jest dostępna.';
+                saveStatus.classList.add('is-error');
+            }
+        });
+    </script>
+</body>
+</html>

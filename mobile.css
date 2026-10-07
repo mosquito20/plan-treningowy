@@ -1,0 +1,73 @@
+@media (max-width: 760px) {
+	.step-progress { margin: -7px 0 17px; }
+	.field-row > .gender-field { margin-top: 16px; }
+	.gender-field .segmented { height: 54px; }
+	.gender-option { border-color: rgba(16,20,23,.15); border-radius: 8px 0 0 8px; background: #fafbf7; }
+	.gender-option + .gender-option { border-radius: 0 8px 8px 0; }
+	.step-actions { gap: 8px; margin-top: 18px; }
+	.step-actions .submit-button { position: static; min-height: 60px; border-radius: 10px; box-shadow: none; padding: 0 15px; font-size: 13px; }
+	.step-button { min-height: 60px; padding: 0 15px; border-radius: 10px; font-size: 13px; }
+	.step-back { flex-basis: 112px; }
+	.session-meta { line-height: 1.5 !important; }
+	.workout-item strong { line-height: 1.35; }
+	.app-shell { padding: 0 20px; }.topbar { height: 72px; }.status { font-size: 8px; }.brand { font-size: 14px; }.hero { min-height: 0; display: block; }.hero-copy { padding: 70px 0 35px; }.hero h1 { font-size: clamp(3.6rem, 18vw, 6rem); }.hero-text { margin: 27px 0 35px; }.hero-stats { gap: 22px; }.hero-orbit { width: 78vw; height: 78vw; margin: 20px auto 60px; }.orbit-core strong { font-size: 65px; }.planner-section { padding: 55px 0 65px; }.section-heading { display: block; margin-bottom: 30px; }.section-heading h2 { margin-top: 8px; }.step-count { margin-top: 23px; }.form-grid { display: block; }.form-card { margin-bottom: 14px; padding: 21px 17px; }.card-wide { display: block; }.field-row { display: block; }.field-row label + label { margin-top: 18px; }.schedule-grid { display: block; }.schedule-grid label { display: block; margin-bottom: 30px; }.schedule-grid label:last-child { margin-bottom: 0; }.goal-grid { gap: 7px; }.goal { min-height: 94px; padding: 10px; }.goal b { font-size: 12px; }.submit-button { min-height: 62px; font-size: 14px; padding: 0 18px; }.result-panel { display: block; padding: 40px 24px; }.result-metrics { margin-top: 42px; gap: 10px; }.result-metrics div { padding-left: 12px; }.result-metrics strong { font-size: 2.3rem; }.result-metrics div + div strong { font-size: 18px; } footer { font-size: 8px; padding: 28px 0; }
+}
+.plan-dashboard { margin-top: 35px; padding-top: 28px; }.dashboard-heading { display: block; }.completion { display: block; margin-top: 15px; }.week-tabs { overflow-x: auto; padding-bottom: 3px; }.week-tab { min-width: 49px; }.workout-list { display: block; }.workout-item + .workout-item { margin-top: 8px; }.habit-strip { align-items: flex-start; }
+
+@media (max-width: 760px) {
+	.form-card input[type=text] { height: 54px; margin-top: 8px; padding: 0 15px; border-color: rgba(16,20,23,.15); background: #fafbf7; border-radius: 8px; font-size: 15px; }
+	:root { --paper: #f5f6f1; --line: rgba(16,20,23,.13); }
+	body { background: var(--paper); }
+	body:before { opacity: .08; }
+	.app-shell { width: 100%; max-width: 480px; padding: 0 16px; overflow: visible; }
+	.topbar { position: sticky; top: 0; z-index: 10; height: 64px; margin: 0 -16px; padding: 0 16px; background: rgba(245,246,241,.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+	.brand { font-size: 13px; letter-spacing: .1em; }
+	.status { display: flex; align-items: center; font-size: 8px; letter-spacing: .08em; }
+	.hero { min-height: auto; display: block; }
+	.hero-copy { padding: 48px 0 34px; }
+	.hero .eyebrow { margin-bottom: 17px; }
+	.hero h1 { max-width: 320px; font-size: clamp(3.2rem, 16vw, 4.8rem); line-height: .91; letter-spacing: -.08em; }
+	.hero-text { max-width: 310px; margin: 22px 0 28px; font-size: 14px; line-height: 1.55; }
+	.hero-stats { gap: 28px; padding-top: 20px; border-top: 1px solid var(--line); }
+	.hero-stats strong { font-size: 15px; }
+	.hero-orbit { display: none; }
+	.planner-section { padding: 32px 0 44px; }
+	.section-heading { margin-bottom: 24px; }
+	.section-heading h2 { max-width: 300px; font-size: 2.25rem; line-height: .98; }
+	.step-count { display: flex; align-items: center; gap: 8px; margin-top: 18px; padding: 10px 12px; width: max-content; border: 1px solid var(--line); background: rgba(255,255,255,.5); }
+	.step-count strong { margin-left: 0; }
+	.form-card { border: 0; border-radius: 14px; background: #fff; box-shadow: 0 8px 25px rgba(16,20,23,.045); margin-bottom: 12px; padding: 22px 16px; }
+	.form-card legend { margin-bottom: 23px; font-size: 16px; }
+	.number { margin-right: 8px; }
+	.form-card label { font-size: 11px; }
+	.form-card input[type=number], select { height: 54px; margin-top: 8px; padding: 0 15px; border-color: rgba(16,20,23,.15); background: #fafbf7; border-radius: 8px; font-size: 15px; }
+	.unit { top: 45px; right: 14px; }
+	.field-row label + label { margin-top: 16px; }
+	.segmented { height: 54px; }
+	.segmented span { border-color: rgba(16,20,23,.15); border-radius: 8px 0 0 8px; }
+	.segmented span + input + span { border-radius: 0 8px 8px 0; }
+	.choice-list { gap: 7px; }
+	.choice { min-height: 64px; border-color: rgba(16,20,23,.12); border-radius: 10px; padding: 10px 12px; }
+	.choice-icon { font-size: 20px; }
+	.goal-grid { gap: 7px; }
+	.goal { min-height: 114px; border-color: rgba(16,20,23,.12); border-radius: 10px; padding: 12px; }
+	.goal > span { margin-bottom: 17px; }
+	.progress-field { margin-top: 20px; }
+	.schedule-grid label { margin-bottom: 28px; }
+	.schedule-grid input[type=range] { height: 28px; margin: 17px 0 3px; }
+	.submit-button { position: sticky; bottom: 12px; z-index: 5; min-height: 60px; border-radius: 12px; box-shadow: 0 10px 24px rgba(16,20,23,.18); padding: 0 18px; font-size: 14px; }
+	.result-panel { margin: 0 -16px; padding: 34px 20px 28px; border-radius: 20px 20px 0 0; }
+	.result-panel h2 { font-size: 2.65rem; }
+	.result-panel p:not(.eyebrow) { font-size: 14px; }
+	.result-metrics { margin-top: 32px; }
+	.result-metrics strong { font-size: 2.05rem; }
+	.result-metrics div + div strong { font-size: 17px; }
+	.plan-dashboard { margin-top: 30px; padding-top: 25px; }
+	.dashboard-heading h3 { font-size: 22px; }
+	.week-tabs { margin: 20px -4px 12px; padding: 0 4px 5px; }
+	.week-tab { min-width: 52px; border-radius: 9px; background: rgba(255,255,255,.38); }
+	.workout-item { border-radius: 10px; padding: 12px; min-height: 72px; }
+	.exercise-check { width: 34px; height: 34px; flex: 0 0 34px; }
+	.habit-strip { padding-bottom: 4px; }
+	footer { padding: 26px 0 34px; }
+}

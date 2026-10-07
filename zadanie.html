@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Animacja div</title>
+	<style>
+		html, body {
+			margin: 0;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+
+		#kwadrat {
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			background-color: tomato;
+			border-radius: 10px;
+		}
+
+		#licznik {
+			position: fixed;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+			font: bold 14px Arial, sans-serif;
+			color: #222;
+			z-index: 1;
+		}
+
+		#licznik span {
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div id="kwadrat"></div>
+	<div id="licznik">
+		<span>count: <strong id="count">0</strong></span>
+		<span>color changes: <strong id="colorChanges">0</strong></span>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script>
+		$(function () {
+			var kwadrat = $('#kwadrat');
+			var x = 0;
+			var y = 0;
+			var kierunek = 'prawo';
+			var kolory = ['tomato', 'dodgerblue', 'limegreen', 'gold', 'mediumorchid'];
+			var numerKoloru = 0;
+			var count = 0;
+			var colorChanges = 0;
+
+			function zmienKolor() {
+				numerKoloru = (numerKoloru + 1) % kolory.length;
+				colorChanges = colorChanges + 1;
+				$('#colorChanges').text(colorChanges);
+				kwadrat.css('background-color', kolory[numerKoloru]);
+			}
+
+			function ruszaj() {
+				var szerokoscKwadratu = kwadrat.outerWidth();
+				var wysokoscKwadratu = kwadrat.outerHeight();
+
+				if (kierunek === 'prawo') {
+					x = x + 4;
+				}
+				if (kierunek === 'dol') {
+					y = y + 4;
+				}
+				if (kierunek === 'lewo') {
+					x = x - 4;
+				}
+				if (kierunek === 'gora') {
+					y = y - 4;
+				}
+
+				if (kierunek === 'prawo' && x >= $(window).width() - szerokoscKwadratu) {
+					x = $(window).width() - szerokoscKwadratu;
+					kierunek = 'dol';
+					zmienKolor();
+				}
+
+				if (kierunek === 'dol' && y >= $(window).height() - wysokoscKwadratu) {
+					y = $(window).height() - wysokoscKwadratu;
+					kierunek = 'lewo';
+					zmienKolor();
+				}
+
+				if (kierunek === 'lewo' && x <= 0) {
+					x = 0;
+					kierunek = 'gora';
+					zmienKolor();
+				}
+
+				if (kierunek === 'gora' && y <= 0) {
+					y = 0;
+					kierunek = 'prawo';
+					count = count + 1;
+					$('#count').text(count);
+					zmienKolor();
+				}
+
+				kwadrat.css({
+					left: x,
+					top: y
+				});
+
+				requestAnimationFrame(ruszaj);
+			}
+
+			ruszaj();
+		});
+	</script>
+</body>
+</html>
